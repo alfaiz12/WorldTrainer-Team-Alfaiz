@@ -1,0 +1,141 @@
+﻿@model WorldTrainer.Models.TrainerModel
+
+@{
+    ViewData["Title"] = "Profile";
+    var total = ViewBag.Exp.Count;
+    var total1 = ViewBag.Qualification.Count;
+    var total2 = ViewBag.Skill.Count;
+}
+
+<h1>Profile</h1>
+
+<div>
+    <h4>TrainerModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainerId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainerId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainerName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainerName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainerEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainerEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainerPhone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainerPhone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainerAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainerAddress)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+</div>
+<h2 style="text-align:center">Experinces</h2>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>ExperienceTechnology</th>
+            <th>ExperienceDuration</th>
+            <th>ExperiencePosition</th>
+            <th>ExperienceLocation</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < total; i++)
+        {
+        <tr>
+
+            <th scope="row" id="book_ids">@ViewBag.Exp[i].ExperienceTechnology</th>
+            <th scope="row">@ViewBag.Exp[i].ExperienceDuration</th>
+            <td>@ViewBag.Exp[i].ExperiencePosition</td>
+            <td>@ViewBag.Exp[i].ExperienceLocation</td>
+            <td><a asp-controller="TrainerController1" asp-action="EditExp" asp-route-id="@ViewBag.Exp[i].ExperienceId">Edit</a> </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    @Html.ActionLink("Add your Experience", "AddExp", new { /* id = Model.PrimaryKey */ }) 
+</div>
+<h2 style="text-align:center">Qualification Details</h2>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>High School Grade</th>
+            <th>Jr college Grade</th>
+            <th>Graduated Grade</th>
+            <th>Extra Certifications</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < total1; i++)
+        {
+        <tr>
+
+            <th scope="row">@ViewBag.Qualification[i].HighSchoolGrade</th>
+            <th scope="row">@ViewBag.Qualification[i].JrcollegeGrade</th>
+            <td>@ViewBag.Qualification[i].GraduatedIn</td>
+            <td>@ViewBag.Qualification[i].ExtraCertifications</td>
+            <td><a asp-controller="TrainerController1" asp-action="EditQua" asp-route-id="@ViewBag.Qualification[i].QualificationId">Edit</a> </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    @Html.ActionLink("Add your Qualification", "AddQua", new { /* id = Model.PrimaryKey */ }) 
+</div>
+<h2 style="text-align:center">Your Skills</h2>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>Sr.No</th>
+            <th>TechSkill_1</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < total2; i++)
+        {
+        <tr>
+
+            <th scope="row" id="book_ids">@i</th>
+            <th scope="row">@ViewBag.Skill[i].TechSkill_1</th>
+            <th><a asp-controller="TrainerController1" asp-action="EditSkill" asp-route-id="@ViewBag.Skill[i].SkillId">Edit</a></th>
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    @Html.ActionLink("Add your skills", "AddSkill", new { /* id = Model.PrimaryKey */ }) 
+</div>
+

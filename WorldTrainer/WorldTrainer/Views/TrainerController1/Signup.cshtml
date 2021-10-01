@@ -1,0 +1,60 @@
+﻿@model WorldTrainer.Models.TrainerModel
+
+@{
+    ViewData["Title"] = "Signup";
+}
+
+<h1>Signup</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Signup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         
+            <div class="form-group">
+                <label asp-for="TrainerName" class="control-label"></label>
+                <input asp-for="TrainerName" class="form-control" />
+                <span asp-validation-for="TrainerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainerEmail" class="control-label"></label>
+                <input asp-for="TrainerEmail" class="form-control" />
+                <span asp-validation-for="TrainerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainerPhone" class="control-label"></label>
+                <input asp-for="TrainerPhone" class="form-control" />
+                <span asp-validation-for="TrainerPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainerAddress" class="control-label"></label>
+                <input asp-for="TrainerAddress" class="form-control" />
+                <span asp-validation-for="TrainerAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainerPassword" class="control-label"></label>
+                <input asp-for="TrainerPassword" class="form-control" />
+                <span asp-validation-for="TrainerPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input type="radio" asp-for="Gender" name="gender" value="Male" />Male
+                <input type="radio" asp-for="Gender" name="gender" value="Female" />Female
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
